@@ -1,0 +1,3 @@
+*.retry
+applier/roles/openshift-applier
+openshift/roles/openshift-applier

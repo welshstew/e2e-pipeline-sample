@@ -27,10 +27,6 @@ metadata:
     template.openshift.io/bindable: "false"
   creationTimestamp: 2019-01-14T14:49:30Z
   name: nodejs-mongodb-example
-  namespace: openshift
-  resourceVersion: "1301"
-  selfLink: /apis/template.openshift.io/v1/namespaces/openshift/templates/nodejs-mongodb-example
-  uid: 99492b9b-180b-11e9-9f2b-066654a4b5e0
 objects:
 - apiVersion: v1
   kind: Secret
@@ -40,14 +36,6 @@ objects:
     database-admin-password: ${DATABASE_ADMIN_PASSWORD}
     database-password: ${DATABASE_PASSWORD}
     database-user: ${DATABASE_USER}
-- apiVersion: v1
-  data:
-    password: R3NMbkIwZ0oxQ0Fj
-    username: Z2l0bGFiLXNh
-  kind: Secret
-  metadata:
-    name: gitlab-secret
-  type: Opaque
 - apiVersion: v1
   kind: Service
   metadata:

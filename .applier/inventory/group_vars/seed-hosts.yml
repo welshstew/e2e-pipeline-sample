@@ -1,5 +1,5 @@
-namespace_labs_dev: dev
-namespace_labs_release: release
+namespace_dev: dev
+namespace_release: release
 
 sample_app_vars_dev:
   NAME: nodejs-sample
@@ -8,7 +8,7 @@ sample_app_vars_dev:
   CONTEXT_DIR: "/nodejs-ex"
 sample_app_vars_release:
   NAME: nodejs-sample
-  NAMESPACE: "{{ namespace_labs_release }}"
+  NAMESPACE: "{{ namespace_release }}"
 
 
 openshift_cluster_content:

@@ -285,7 +285,7 @@ pipeline {
                 success {
                     // Merge changes into release branch
                     git branch: 'master',
-                        credentialsId: 'labs-ci-cd-gitlab-secret',
+                        credentialsId: 'cicd-github-secret',
                         url: "$GIT_URL"
                       
                     sh  '''

@@ -1,6 +1,7 @@
 openshift.withCluster() {
   env.APP_NAME = "nodejs-sample"
   env.PIPELINES_NAMESPACE = "cicd"
+  env.BUILD_NAMESPACE = "dev"
   env.DEV_NAMESPACE = "dev"
   env.RELEASE_NAMESPACE = "release"
   echo "Starting Pipeline for ${APP_NAME}..."
@@ -41,6 +42,9 @@ pipeline {
     environment {
         GIT_SSL_NO_VERIFY = true
         GIT_CREDENTIALS = credentials('cicd-github-secret')
+
+        JENKINS_TAG = "${JOB_NAME}.${BUILD_NUMBER}"
+        RELEASE_TAG = "release"
     }
 
     stages {
@@ -90,7 +94,11 @@ pipeline {
                     openshift.withCluster() {
                         openshift.withProject( "${DEV_NAMESPACE}" ) {
                             echo "Using project: ${openshift.project()}"
-                            openshift.startBuild("${APP_NAME}","--follow","--wait")
+                            sh '''
+                                oc patch bc ${APP_NAME} -p "{\\"spec\\":{\\"output\\":{\\"to\\":{\\"kind\\":\\"ImageStreamTag\\",\\"name\\":\\"${APP_NAME}:${JENKINS_TAG}\\"}}}}" -n ${BUILD_NAMESPACE}
+                                oc start-build ${APP_NAME} --follow -n ${BUILD_NAMESPACE}
+                            '''
+                            // openshift.startBuild("${APP_NAME}","--follow","--wait")
                         }
                     }
                 } 

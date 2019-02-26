@@ -303,7 +303,7 @@ pipeline {
                         GIT_REPO_NAME=$(echo ${GIT_URL} | cut -d'/' -f5)
 
                         git remote remove origin
-                        git remote add origin https://${GIT_CREDENTIALS_USR}:${GIT_CREDENTIALS_PSW}@${GIT_SERVER_NAME}/${GIT_PROJECT_NAME}/${GIT_REPO_NAME}
+                        git remote add origin https://${GIT_CREDENTIALS_USR}:${GIT_CREDENTIALS_PSW}@${GIT_SERVER_NAME}/${GIT_PROJECT_NAME}/${GIT_REPO_NAME}.git
                         
                         git config user.name 'JenkinsCI'
                         git config user.email 'jenkins@jenkins.com'

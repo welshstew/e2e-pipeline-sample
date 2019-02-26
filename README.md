@@ -1,6 +1,8 @@
-# Labs Prep
+# e2e-pipeline-sample
 
 Making the ansible slave and Jenkins in a cicd namespace in order to get pipelines working...
+
+This is all using openshift applier, please view the items in `.openshift` and `.applier` in order to get an idea of what is happening in the pipeline, quite reliant on the `jenkins-slave-ansible` that will be built below.
 
 ## Get an ansible Jenkins Slave Built
 
@@ -33,7 +35,7 @@ Surprisingly didn't need to do anything - it's auto configured..!
 
 ## Create the credential inside Jenkins
 
-Create the `cicd-github-secret` with your GitHub credentials
+Create the `cicd-github-secret` in Jenkins with your GitHub credentials
 
 ![add-jenkins-credential](./images/add-jenkins-credential.png)
 
@@ -44,7 +46,24 @@ oc policy add-role-to-user admin system:serviceaccount:cicd:jenkins -n dev
 oc policy add-role-to-user admin system:serviceaccount:cicd:jenkins -n release
 ```
 
+## Create the JenkinsFile Pipeline
+
+```shell
+oc create -f sample-pipeline.yml
+```
+
+Once done, you should get a pipelines you can run from the Openshift web console.
+
+![openshift-e2e-pipeline](./images/pipelines-screenshot.png)
+
+This view will also be available via the traditional Jenkins build job in the persistent Jenkins you have created.
+
+![openshift-jenkins-pipeline](./images/pipeline-jenkins-screenshot.png)
+
 ## Webhooks
 
 Can configure webhooks if available on the interwebs
 
+## Issues
+
+I had a `#` in my GitHub password which wasn't ideal.  Caused problems with the git fetch X-)

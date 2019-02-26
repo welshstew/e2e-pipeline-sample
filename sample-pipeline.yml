@@ -1,0 +1,31 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  labels:
+    app: e2e-pipeline-sample
+    build: e2e-pipeline-sample
+    name: e2e-pipeline-sample
+    template: ocp-pipeline-template
+    type: pipeline
+  name: e2e-pipeline-sample
+  namespace: cicd
+spec:
+  failedBuildsHistoryLimit: 5
+  nodeSelector: {}
+  output: {}
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    git:
+      ref: master
+      uri: >-
+        https://github.com/welshstew/e2e-pipeline-sample
+    sourceSecret:
+      name: github-secret
+    type: Git
+  strategy:
+    jenkinsPipelineStrategy:
+      jenkinsfilePath: Jenkinsfile
+    type: JenkinsPipeline
+  successfulBuildsHistoryLimit: 5

@@ -4,7 +4,7 @@ openshift.withCluster() {
   env.BUILD_NAMESPACE = "dev"
   env.DEV_NAMESPACE = "dev"
   env.RELEASE_NAMESPACE = "release"
-  env.GIT_URL = "https://github.com/welshstew/e2e-pipeline-sample.git"
+//   env.GIT_URL = "https://github.com/welshstew/e2e-pipeline-sample.git"
   echo "Starting Pipeline for ${APP_NAME}..."
 }
 

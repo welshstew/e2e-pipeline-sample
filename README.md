@@ -27,7 +27,9 @@ oc new-app --template=jenkins-persistent
 
 ## Configure the ansible jenkins slave
 
-Surprisingly didn't need to do anything - it's auto configured..!
+Surprisingly didn't need to do anything - it's auto configured..!  However, here's an image to show it:
+
+![jenkins-slave-management-config](./images/jenkins-slave-management-config.png)
 
 ## Create the github secret in the cicd and dev namespaces
 

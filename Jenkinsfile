@@ -44,11 +44,7 @@ pipeline {
         GIT_SSL_NO_VERIFY = true
         GIT_CREDENTIALS = credentials('cicd-github-secret')
 
-        JENKINS_TAG = "${JOB_NAME}.${BUILD_NUMBER}"
-        if(JENKINS_TAG.contains("/")){
-            def splitTag = JENKINS_TAG.split("/")
-            JENKINS_TAG = splitTag[splitTag.length]
-        }
+        JENKINS_TAG = "${JENKINS_TAG.split("/")[1]}.${BUILD_NUMBER}"
         RELEASE_TAG = "release"
     }
 

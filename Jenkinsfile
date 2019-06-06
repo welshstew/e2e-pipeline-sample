@@ -45,6 +45,10 @@ pipeline {
         GIT_CREDENTIALS = credentials('cicd-github-secret')
 
         JENKINS_TAG = "${JOB_NAME}.${BUILD_NUMBER}"
+        if(JENKINS_TAG.contains("/")){
+            def splitTag = JENKINS_TAG.split("/")
+            JENKINS_TAG = splitTag[splitTag.length]
+        }
         RELEASE_TAG = "release"
     }
 

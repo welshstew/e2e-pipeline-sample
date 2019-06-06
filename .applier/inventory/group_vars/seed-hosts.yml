@@ -5,6 +5,7 @@ sample_app_vars_dev:
   NAME: nodejs-sample
   NAMESPACE: "{{ namespace_dev }}"
   SOURCE_REPOSITORY_URL: "https://github.com/welshstew/e2e-pipeline-sample.git"
+  SOURCE_REPOSITORY_REF: openshiftv4
   CONTEXT_DIR: "/nodejs-ex"
 sample_app_vars_release:
   NAME: nodejs-sample

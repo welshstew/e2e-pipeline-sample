@@ -99,7 +99,7 @@ pipeline {
                             sh '''
                                 oc patch bc ${APP_NAME} -p "{\\"spec\\":{\\"output\\":{\\"to\\":{\\"kind\\":\\"ImageStreamTag\\",\\"name\\":\\"${APP_NAME}:${JENKINS_TAG}\\"}}}}" -n ${BUILD_NAMESPACE}
                                 oc start-build ${APP_NAME} --follow -n ${BUILD_NAMESPACE}
-                                oc tag ${APP_NAME}:${JENKINS_TAG} ${APP_NAME}:latest
+                                oc tag ${APP_NAME}:${JENKINS_TAG} ${APP_NAME}:latest -n ${BUILD_NAMESPACE}
                             '''
                             // openshift.startBuild("${APP_NAME}","--follow","--wait")
                         }

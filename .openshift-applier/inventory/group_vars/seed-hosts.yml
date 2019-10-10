@@ -10,13 +10,17 @@ sample_app_vars_release:
   NAME: nodejs-sample
   NAMESPACE: "{{ namespace_release }}"
 
+sample_app_build_dev:
+  NAME: "{{ application_name }}"
+
+
 
 openshift_cluster_content:
 - object: Builds
   content:
   - name: Sample Node Build DEV
     template: "{{ inventory_dir }}/templates/build.yml"
-    params_from_vars: "{{ router_vars_build_dev }}"
+    params_from_vars: "{{ sample_app_build_dev }}"
     namespace: "{{ namespace_labs_dev }}"
     tags:
       - dev

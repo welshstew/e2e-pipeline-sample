@@ -1,0 +1,4 @@
+NAME=nodejs-sample
+NAMESPACE=dev
+SOURCE_REPOSITORY_URL=https://github.com/welshstew/e2e-pipeline-sample.git
+CONTEXT_DIR=/nodejs-ex

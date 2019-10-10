@@ -89,11 +89,6 @@ parameters:
   name: NODEJS_VERSION
   required: true
   value: "8"
-- description: Version of MongoDB image to be used (3.2, 3.4, or latest).
-  displayName: Version of MongoDB Image
-  name: MONGODB_VERSION
-  required: true
-  value: "3.4"
 - description: Maximum amount of memory the Node.js container can use.
   displayName: Memory Limit
   name: MEMORY_LIMIT
@@ -132,29 +127,3 @@ parameters:
   from: '[a-zA-Z0-9]{40}'
   generate: expression
   name: GENERIC_WEBHOOK_SECRET
-- displayName: Database Service Name
-  name: DATABASE_SERVICE_NAME
-  required: true
-  value: mongodb
-- description: Username for MongoDB user that will be used for accessing the database.
-  displayName: MongoDB Username
-  from: user[A-Z0-9]{3}
-  generate: expression
-  name: DATABASE_USER
-- description: Password for the MongoDB user.
-  displayName: MongoDB Password
-  from: '[a-zA-Z0-9]{16}'
-  generate: expression
-  name: DATABASE_PASSWORD
-- displayName: Database Name
-  name: DATABASE_NAME
-  required: true
-  value: sampledb
-- description: Password for the database admin user.
-  displayName: Database Administrator Password
-  from: '[a-zA-Z0-9]{16}'
-  generate: expression
-  name: DATABASE_ADMIN_PASSWORD
-- description: The custom NPM mirror URL
-  displayName: Custom NPM Mirror URL
-  name: NPM_MIRROR

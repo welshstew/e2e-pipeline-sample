@@ -13,7 +13,10 @@ sample_app_vars_release:
 
 sample_app_build_dev:
   NAME: "{{ application_name }}"
-
+  NAMESPACE: "{{ namespace_dev }}"
+  SOURCE_REPOSITORY_URL: "https://github.com/welshstew/e2e-pipeline-sample.git"
+  CONTEXT_DIR: "/nodejs-ex"
+  
 openshift_cluster_content:
 - object: Builds
   content:

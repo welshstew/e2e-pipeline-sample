@@ -1,13 +1,14 @@
 namespace_dev: dev
 namespace_release: release
+application_name: nodejs-sample
 
 sample_app_vars_dev:
-  NAME: nodejs-sample
+  NAME: "{{ application_name }}"
   NAMESPACE: "{{ namespace_dev }}"
   SOURCE_REPOSITORY_URL: "https://github.com/welshstew/e2e-pipeline-sample.git"
   CONTEXT_DIR: "/nodejs-ex"
 sample_app_vars_release:
-  NAME: nodejs-sample
+  NAME: "{{ application_name }}"
   NAMESPACE: "{{ namespace_release }}"
 
 sample_app_build_dev:

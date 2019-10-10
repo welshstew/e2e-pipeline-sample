@@ -18,7 +18,7 @@ openshift_cluster_content:
 - object: Builds
   content:
   - name: Sample Node Build DEV
-    template: "{{ inventory_dir }}/templates/build.yml"
+    template: "{{ playbook_dir }}/templates/build.yml"
     params_from_vars: "{{ sample_app_build_dev }}"
     namespace: "{{ namespace_dev }}"
     tags:
@@ -27,14 +27,14 @@ openshift_cluster_content:
 - object: Deployments
   content:
   - name: Sample Node Application DEV
-    template: "{{ inventory_dir }}/templates/node-dev.yml"
+    template: "{{ playbook_dir }}/templates/node-dev.yml"
     params_from_vars: "{{ sample_app_vars_dev }}"
     namespace: "{{ namespace_dev }}"
     tags:
     - dev
 
   - name: Sample Node Application RELEASE
-    template: "{{ inventory_dir }}/templates/node-release.yml"
+    template: "{{ playbook_dir }}/templates/node-release.yml"
     params_from_vars: "{{ sample_app_vars_release }}"
     namespace: "{{ namespace_release }}"
     tags:

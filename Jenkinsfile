@@ -72,8 +72,8 @@ pipeline {
 
                 sh  '''
                 printenv
-                ansible-galaxy install -r .applier/requirements.yml --roles-path=.applier/roles
-                ansible-playbook -i .applier/inventory .applier/apply.yml -e filter_tags=dev
+                ansible-galaxy install -r .openshift-applier/requirements.yml --roles-path=.openshift-applier/roles
+                ansible-playbook -i .openshift-applier/inventory .openshift-applier/apply.yml -e filter_tags=dev
                 '''
             }
             post {
@@ -233,8 +233,8 @@ pipeline {
                 echo '👷 Create OpenShift objects in RELEASE using openshift-applier...'
 
                 sh  '''
-                ansible-galaxy install -r .applier/requirements.yml --roles-path=.applier/roles
-                ansible-playbook -i .applier/inventory .applier/apply.yml -e filter_tags=release
+                ansible-galaxy install -r .openshift-applier/requirements.yml --roles-path=.openshift-applier/roles
+                ansible-playbook -i .openshift-applier/inventory .openshift-applier/apply.yml -e filter_tags=release
                 '''
             }
             post {

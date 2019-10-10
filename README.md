@@ -69,3 +69,7 @@ Can configure webhooks if available on the interwebs
 ## Issues
 
 I had a `#` in my GitHub password which wasn't ideal.  Caused problems with the git fetch X-)
+
+## Applier Rationale
+
+http://uncontained.io/articles/openshift-template-infra-as-code/#_automation_using_templates_the_openshift_applier_framework

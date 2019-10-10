@@ -1,10 +1,5 @@
 ---
-- name: Build and Deploy todolist-api 
-  hosts: app
-  vars:
-    ci_cd_namespace: cicd
-    dev_namespace: dev
-    test_namespace: release
-  tasks:
-    - include_role:
-        name: openshift-applier/roles/openshift-applier
+- name: Build and Deploy e2e-sample-pipeline
+  hosts: seed-hosts
+  roles:
+    - { role: roles/openshift-applier/roles/openshift-applier }

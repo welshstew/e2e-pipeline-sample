@@ -12,16 +12,25 @@ sample_app_vars_release:
 
 
 openshift_cluster_content:
-- object: node-sample
+- object: Builds
+  content:
+  - name: Sample Node Build DEV
+    template: "{{ inventory_dir }}/templates/build.yml"
+    params_from_vars: "{{ router_vars_build_dev }}"
+    namespace: "{{ namespace_labs_dev }}"
+    tags:
+      - dev
+
+- object: Deployments
   content:
   - name: Sample Node Application DEV
-    template: "{{ playbook_dir }}/templates/node-dev.yml"
+    template: "{{ inventory_dir }}/templates/node-dev.yml"
     params_from_vars: "{{ sample_app_vars_dev }}"
     namespace: "{{ namespace_dev }}"
     tags:
     - dev
   - name: Sample Node Application RELEASE
-    template: "{{ playbook_dir }}/templates/node-release.yml"
+    template: "{{ inventory_dir }}/templates/node-release.yml"
     params_from_vars: "{{ sample_app_vars_release }}"
     namespace: "{{ namespace_release }}"
     tags:

@@ -12,7 +12,7 @@ oc new-project release
 oc new-project cicd
 git clone https://github.com/redhat-cop/containers-quickstarts
 cd containers-quickstarts/jenkins-slaves/jenkins-slave-ansible
-oc process -f ../.openshift/templates/jenkins-slave-generic-template.yml     -p NAME=jenkins-slave-ansible     -p SOURCE_CONTEXT_DIR=jenkins-slaves/jenkins-slave-ansible     | oc create -f -
+oc process -f ../.openshift/templates/jenkins-slave-generic-template.yml -p BUILDER_IMAGE_NAME=quay.io/openshift/origin-jenkins-agent-base:4.1    -p NAME=jenkins-slave-ansible     -p SOURCE_CONTEXT_DIR=jenkins-slaves/jenkins-slave-ansible     | oc create -f -
 # once the image is built
 oc tag cicd/jenkins-slave-ansible:v3.11 cicd/jenkins-slave-ansible:latest
 ```
@@ -33,7 +33,10 @@ Surprisingly didn't need to do anything - it's auto configured..!  However, here
 
 ## Create the github secret in the cicd and dev namespaces
 
-`oc create secret generic github-secret --from-literal=username=yourusername --from-literal=password=12345678`
+```shell
+oc create secret generic github-secret --from-literal=username=yourusername --from-literal=password=12345678 -n cicd
+oc create secret generic github-secret --from-literal=username=yourusername --from-literal=password=12345678 -n dev
+```
 
 ## Create the credential inside Jenkins
 

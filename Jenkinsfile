@@ -45,6 +45,7 @@ pipeline {
         GIT_CREDENTIALS = credentials('cicd-github-secret')
 
         JENKINS_TAG = "${JOB_NAME}.${BUILD_NUMBER}"
+        JENKINS_TAG = "${JENKINS_TAG}".substring("${JENKINS_TAG}".lastIndexOf("/") + 1)
         RELEASE_TAG = "release"
     }
 

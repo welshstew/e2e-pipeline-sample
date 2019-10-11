@@ -1,5 +1,7 @@
 # e2e-pipeline-sample
 
+UPDATED to run on Openshift v4!
+
 Making the ansible slave and Jenkins in a cicd namespace in order to get pipelines working...
 
 This is all using openshift applier, please view the items in `.openshift` and `.applier` in order to get an idea of what is happening in the pipeline, quite reliant on the `jenkins-slave-ansible` that will be built below.

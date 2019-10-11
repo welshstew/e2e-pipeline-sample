@@ -211,9 +211,11 @@ pipeline {
             steps {
                     echo 'Promoting Container Image to Release'
                     script {
-                        openshift.withProject( "${DEV_NAMESPACE}" ) {
-                            echo "Promoting to ${RELEASE_NAMESPACE}"
-                            openshift.tag("${APP_NAME}:latest", "${RELEASE_NAMESPACE}/${APP_NAME}:release")
+                        openshift.withCluster() {
+                            openshift.withProject( "${DEV_NAMESPACE}" ) {
+                                echo "Promoting to ${RELEASE_NAMESPACE}"
+                                openshift.tag("${APP_NAME}:latest", "${RELEASE_NAMESPACE}/${APP_NAME}:release")
+                            }
                         }
                     }
             }

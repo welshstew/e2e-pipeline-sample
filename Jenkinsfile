@@ -236,7 +236,7 @@ pipeline {
                 echo '👷 Create OpenShift objects in RELEASE using openshift-applier...'
 
                 sh  '''
-                ansible-galaxy install -r .openshift-applier/requirements.yml --roles-path=.openshift-applier/roles
+                ansible-galaxy install -r .openshift-applier/requirements.yml --roles-path=.openshift-applier/roles --ignore-errors
                 ansible-playbook -i .openshift-applier/inventory .openshift-applier/apply.yml -e filter_tags=release
                 '''
             }
